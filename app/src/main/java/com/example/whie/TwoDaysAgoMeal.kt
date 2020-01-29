@@ -11,7 +11,7 @@ class TwoDaysAgoMeal : AppCompatActivity() {
         setContentView(R.layout.activity_two_days_ago_meal)
 
         val bundle=intent.getBundleExtra("bundle")
-        val meal=bundle.getParcelable<Meal>("selected_meal") as Meal
+        val meal=bundle.getParcelable<Meal>("yesterday_meal") as Meal
 
         textView.text=meal.foodName
     }
