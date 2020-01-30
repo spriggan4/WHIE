@@ -6,13 +6,6 @@ import kotlinx.android.synthetic.main.activity_select_yesterday_meal.*
 import org.jetbrains.anko.startActivity
 
 class SelectYesterdayMeal : AppCompatActivity() {
-    private val areaDivisions = arrayOf("Korea","West","Japan")
-    private val foodTypes = arrayOf("Meat", "Bread", "Sasimi", "Noodle")
-    private val mainMealTimes = arrayOf("Morning", "Lunch", "Dinner")
-    private val tastes = arrayOf(
-        "Oily", "LowOily", "SweetyAndSalty"
-        , "Texture", "SpicyAndSalty", "Salty", "Soup", "HitsTheSpot"
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +16,11 @@ class SelectYesterdayMeal : AppCompatActivity() {
         samGyubSalText.setOnClickListener {
             makeBundleAndStartActivity(
                 Meal(
-                    "삼겹살", areaDivisions[0], foodTypes[0], mainMealTimes[2],
-                    tastes[0]
+                    "삼겹살",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.MEAT.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.OILY.ordinal
                 )
             )
         }
@@ -32,26 +28,11 @@ class SelectYesterdayMeal : AppCompatActivity() {
         duckMeatText.setOnClickListener {
             makeBundleAndStartActivity(
                 Meal(
-                    "오리고기", "Korea",
-                    "Meat", "Dinner", "LowOily"
-                )
-            )
-        }
-
-        pizzaText.setOnClickListener {
-            makeBundleAndStartActivity(
-                Meal(
-                    "피자", "West",
-                    "Bread", "Dinner", "Oily"
-                )
-            )
-        }
-
-        porkGalBiText.setOnClickListener {
-            makeBundleAndStartActivity(
-                Meal(
-                    "양념갈비", "Korea",
-                    "Meat", "Dinner", "SweetyAndSalty"
+                    "오리고기",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.MEAT.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.LOW_OILY.ordinal
                 )
             )
         }
@@ -59,8 +40,64 @@ class SelectYesterdayMeal : AppCompatActivity() {
         saSiMiText.setOnClickListener {
             makeBundleAndStartActivity(
                 Meal(
-                    "회", "Japan",
-                    "Sasimi", "Dinner", "Texture"
+                    "회",
+                    AreaDivision.JAPAN.ordinal,
+                    FoodType.SASIMI.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.TEXTURE.ordinal
+                )
+            )
+        }
+
+        suShiText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "초밥",
+                    AreaDivision.JAPAN.ordinal,
+                    FoodType.SASIMI.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.TEXTURE.ordinal,
+                    Taste.RICE.ordinal,
+                    Taste.SWEETY_AND_SALTY.ordinal
+                )
+            )
+        }
+
+        gamJaTangText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "감자탕",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.MEAT_SOUP.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.SOUP.ordinal,
+                    Taste.LOW_OILY.ordinal
+                )
+            )
+        }
+
+        curryText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "카레",
+                    AreaDivision.ETC.ordinal,
+                    FoodType.RICE.ordinal,
+                    MainMealTime.LUNCH.ordinal,
+                    Taste.HOT.ordinal,
+                    Taste.PEPPERY.ordinal
+                )
+            )
+        }
+
+        porkGalBiText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "돼지갈비",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.MEAT.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.SWEETY_AND_SALTY.ordinal,
+                    Taste.LOW_OILY.ordinal
                 )
             )
         }
@@ -68,8 +105,77 @@ class SelectYesterdayMeal : AppCompatActivity() {
         braisedChickenText.setOnClickListener {
             makeBundleAndStartActivity(
                 Meal(
-                    "찜닭", areaDivisions[0], foodTypes[0], mainMealTimes[2],
-                    tastes[2]
+                    "찜닭",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.MEAT.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.SWEETY_AND_SALTY.ordinal,
+                    Taste.LOW_OILY.ordinal
+                )
+            )
+        }
+
+        biBimBobText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "비빔밥",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.RICE.ordinal,
+                    MainMealTime.ANYTIME.ordinal,
+                    Taste.RICE.ordinal,
+                    Taste.HOT.ordinal,
+                    Taste.ADD_FLAVOR.ordinal
+                )
+            )
+        }
+
+        pizzaText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "피자",
+                    AreaDivision.WEST.ordinal,
+                    FoodType.BREAD.ordinal,
+                    MainMealTime.DINNER.ordinal,
+                    Taste.CHEESY.ordinal
+                )
+            )
+        }
+
+        gugSuText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "국수",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.NOODLE.ordinal,
+                    MainMealTime.LUNCH.ordinal,
+                    Taste.SOUP.ordinal,
+                    Taste.SOY_SAUCE.ordinal
+                )
+            )
+        }
+
+        calGugSuText.setOnClickListener{
+            makeBundleAndStartActivity(
+                Meal(
+                    "칼국수",
+                    AreaDivision.KOREA.ordinal,
+                    FoodType.NOODLE.ordinal,
+                    MainMealTime.LUNCH.ordinal,
+                    Taste.SOUP.ordinal,
+                    Taste.HITS_THE_SPOT.ordinal
+                )
+            )
+        }
+
+        hamBurGerText.setOnClickListener {
+            makeBundleAndStartActivity(
+                Meal(
+                    "햄버거",
+                    AreaDivision.WEST.ordinal,
+                    FoodType.BREAD.ordinal,
+                    MainMealTime.LUNCH.ordinal,
+                    Taste.OILY.ordinal,
+                    Taste.SWEETY_AND_SALTY.ordinal
                 )
             )
         }

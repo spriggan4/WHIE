@@ -3,35 +3,44 @@ package com.example.whie
 import android.os.Parcel
 import android.os.Parcelable
 
+enum class AreaDivision { KOREA, WEST, JAPAN, ETC }
+enum class FoodType { MEAT, MEAT_SOUP, BREAD, SASIMI, NOODLE, RICE }
+enum class MainMealTime { MORNING, LUNCH, DINNER, ANYTIME }
+enum class Taste {
+    OILY, LOW_OILY, SWEETY_AND_SALTY, TEXTURE,
+    SAVORY, SALTY, SOUP, HITS_THE_SPOT, CHEESY, RICE, HOT, PEPPERY, ADD_FLAVOR,
+    SOY_SAUCE
+}
+
 data class Meal(
     val foodName: String?,
-    val areaDivision: String?,
-    val foodType: String?,
-    val mainMealTime: String?,
-    val taste1: String?,
-    var taste2: String? = "",
-    var taste3: String? = ""
+    val areaDivision: Int,
+    val foodType: Int,
+    val mainMealTime: Int,
+    val taste1: Int,
+    val taste2: Int = 1000,
+    val taste3: Int = 1000
 ) : Parcelable {
     constructor(source: Parcel) : this(
-        foodName = source.readString(),
-        areaDivision = source.readString(),
-        foodType = source.readString(),
-        mainMealTime = source.readString(),
-        taste1 = source.readString(),
-        taste2 = source.readString(),
-        taste3 = source.readString()
+        source.readString(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt(),
+        source.readInt()
     )
 
     override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeString(foodName)
-        writeString(areaDivision)
-        writeString(foodType)
-        writeString(mainMealTime)
-        writeString(taste1)
-        writeString(taste2)
-        writeString(taste3)
+        writeInt(areaDivision)
+        writeInt(foodType)
+        writeInt(mainMealTime)
+        writeInt(taste1)
+        writeInt(taste2)
+        writeInt(taste3)
     }
 
     companion object {
