@@ -13,15 +13,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         morningBtn.setOnClickListener {
-            mealTime = "아침"
+            mealTime = MainMealTime.아침.toString()
             inputYesterdayMeal()
         }
         lunchBtn.setOnClickListener {
-            mealTime = "점심"
+            mealTime = MainMealTime.점심.toString()
             inputYesterdayMeal()
         }
         dinnerBtn.setOnClickListener {
-            mealTime = "저녁"
+            mealTime = MainMealTime.저녁.toString()
             inputYesterdayMeal()
         }
     }

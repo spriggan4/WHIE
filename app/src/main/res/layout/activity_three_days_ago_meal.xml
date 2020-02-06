@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectYesterdayMeal">
+    tools:context=".ThreeDaysAgoMeal">
 
     <TextView
-        android:id="@+id/youEatTwoDaysAgoText"
+        android:id="@+id/youEatThreeDaysAgoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="90dp"
         android:layout_marginTop="53dp"
-        android:text="어제 먹은"
+        android:text="삼일 전에 먹은"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,24 +21,24 @@
         android:id="@+id/mealTimeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="52dp"
         android:text=""
         android:textSize="30sp"
-        app:layout_constraintStart_toEndOf="@+id/youEatTwoDaysAgoText"
+        app:layout_constraintStart_toEndOf="@+id/youEatThreeDaysAgoText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/samGyubSalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="76dp"
         android:text="삼겹살"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/youEatTwoDaysAgoText" />
+        app:layout_constraintTop_toBottomOf="@+id/youEatThreeDaysAgoText" />
 
     <TextView
         android:id="@+id/duckMeatText"

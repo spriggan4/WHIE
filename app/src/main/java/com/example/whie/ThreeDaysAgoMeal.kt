@@ -5,101 +5,98 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_select_yesterday_meal.*
 import org.jetbrains.anko.startActivity
 
-class SelectYesterdayMeal : AppCompatActivity() {
+class ThreeDaysAgoMeal : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_select_yesterday_meal)
+        setContentView(R.layout.activity_three_days_ago_meal)
 
-        //toString() 안붙여서 에러 났음.
-        val mealTime = intent.getStringExtra("mealTime").toString()
-
+        val bundle = intent.getBundleExtra("bundle") as Bundle
+        val mealTime = bundle.getString("meal_time") as String
         mealTimeText.text = mealTime
 
         samGyubSalText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[0]
+                bundle, meals[0]
             )
         }
 
         duckMeatText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[1]
+                bundle,meals[1]
             )
         }
 
         saSiMiText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[2]
+                bundle,meals[2]
             )
         }
 
         suShiText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[3]
+                bundle,meals[3]
             )
         }
 
         gamJaTangText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[4]
+                bundle,meals[4]
             )
         }
 
         curryText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[5]
+                bundle,meals[5]
             )
         }
 
         porkGalBiText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[6]
+                bundle,meals[6]
             )
         }
 
         braisedChickenText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[7]
+                bundle,meals[7]
             )
         }
 
         biBimBobText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[8]
+                bundle,meals[8]
             )
         }
 
         pizzaText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[9]
+                bundle,meals[9]
             )
         }
 
         gugSuText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[10]
+                bundle,meals[10]
             )
         }
 
         calGugSuText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[11]
+                bundle,meals[11]
             )
         }
 
         hamBurGerText.setOnClickListener {
             makeBundleAndStartActivity(
-                meals[12]
+                bundle,meals[12]
             )
         }
     }
 
-    private fun makeBundleAndStartActivity(meal: Meal) {
-        var bundle = Bundle()
-        bundle.putParcelable("yesterday_meal", meal)
-        bundle.putString("meal_time", mealTimeText.text.toString())
+    private fun makeBundleAndStartActivity(bundle:Bundle,meal: Meal) {
+        bundle.putParcelable("three_days_ago_meal", meal)
 
-        startActivity<TwoDaysAgoMeal>("bundle" to bundle)
+        startActivity<Result>("bundle" to bundle)
     }
 }
