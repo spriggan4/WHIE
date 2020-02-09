@@ -8,6 +8,18 @@ import kotlin.random.Random
 
 class Result : AppCompatActivity() {
     val numMultipleWeight = 2
+    var beforPickedMeal: Meal? = null
+    var pickedMeal: Meal? = null
+    var numsForRandomFoodType = Array(FoodType.values().size, { 1 })
+    var weightsForFoodType = arrayListOf<Int>()
+    var numsForRandomFatTaste = Array(FatTaste.values().size, { 1 })
+    var weightsForFatTaste = arrayListOf<Int>()
+    var numsForRandomTaste = Array(Taste.values().size, { 1 })
+    var weightsForTaste = arrayListOf<Int>()
+    var mealsSearchedThroughMealtime = arrayListOf<Meal>()
+    var mealSearchedThroughFoodType = arrayListOf<Meal>()
+    var mealSearchedThroughFatTaste = arrayListOf<Meal>()
+    var mealSearchedThroughTaste = arrayListOf<Meal>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,47 +50,24 @@ class Result : AppCompatActivity() {
             threeDayMeal[1].taste.ordinal,
             threeDayMeal[2].taste.ordinal
         )
-
-        val pickedMeal = chooseRandomlyMealWithThreeDayMeal(
+        chooseRandomlyMealStuffWithThreeDayMeal(
             pickedMealTime,
             selectedFoodTypeWithThreeDay,
             selectedFatTasteWithThreeDay,
             selectedTasteWithThreeDay
         )
 
-        if (pickedMeal == null) {
-            chooseRandomlyMealWithThreeDayMeal(
-                pickedMealTime,
-                selectedFoodTypeWithThreeDay,
-                selectedFatTasteWithThreeDay,
-                selectedTasteWithThreeDay
-            )
+        againBtn.setOnClickListener {
+            showResultText()
         }
-
-        Log.d("mealsSearched", "pickedMeal = " + pickedMeal)
-
-        resultText.text = pickedMeal!!.foodName.toString()
     }
 
-    fun chooseRandomlyMealWithThreeDayMeal(
+    fun chooseRandomlyMealStuffWithThreeDayMeal(
         pickedMealTime: String,
         selectedFoodTypeWithThreeDay: Array<Int>,
         selectedFatTasteWithThreeDay: Array<Int>,
         selectedTasteWithThreeDay: Array<Int>
-    ): Meal? {
-        var pickedMeal: Meal? = null
-        Log.d("mealsSearched", "FromStartMeal = " + pickedMeal)
-        var numsForRandomFoodType = Array(FoodType.values().size, { 1 })
-        var weightsForFoodType = arrayListOf<Int>()
-        var numsForRandomFatTaste = Array(FatTaste.values().size, { 1 })
-        var weightsForFatTaste = arrayListOf<Int>()
-        var numsForRandomTaste = Array(Taste.values().size, { 1 })
-        var weightsForTaste = arrayListOf<Int>()
-        var mealsSearchedThroughMealtime = arrayListOf<Meal>()
-        var mealSearchedThroughFoodType = arrayListOf<Meal>()
-        var mealSearchedThroughFatTaste = arrayListOf<Meal>()
-        var mealSearchedThroughTaste = arrayListOf<Meal>()
-
+    ) {
         //선택된 식사시간의 메뉴들 배열에 넣기
         searchThroughMealTime(pickedMealTime, mealsSearchedThroughMealtime)
         when (pickedMealTime) {
@@ -118,7 +107,10 @@ class Result : AppCompatActivity() {
             weightsForTaste.add(Taste.values().size - numsForRandomTaste[num])
         }
 
+        showResultText()
+    }
 
+    fun showResultText() {
         do {
             var pickedFoodType: FoodType =
                 FoodType.values()[weighted_random(weightsForFoodType)]
@@ -160,9 +152,10 @@ class Result : AppCompatActivity() {
                 mealSearchedThroughTaste.clear()
             }
             Log.d("mealsSearched", "meal = " + pickedMeal)
-        } while (pickedMeal == null)
+        } while (pickedMeal == null || pickedMeal == beforPickedMeal)
 
-        return pickedMeal
+        resultText.text = pickedMeal!!.foodName.toString()
+        beforPickedMeal = pickedMeal
     }
 
     fun weighted_random(weights: ArrayList<Int>): Int {
