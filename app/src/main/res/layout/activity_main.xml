@@ -42,16 +42,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lunchBtn" />
 
-    <EditText
-        android:id="@+id/whatDoYouWant"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="어떤 메뉴를 골라드릴까요"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="20dp"
+        android:text="어떤 시간의 메뉴를 원하세요"
+        android:textAlignment="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

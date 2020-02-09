@@ -3,6 +3,7 @@ package com.example.whie
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_result.*
 import kotlin.random.Random
 
 class Result : AppCompatActivity() {
@@ -12,7 +13,6 @@ class Result : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-
         val bundle = intent.getBundleExtra("bundle") as Bundle
         val pickedMealTime = bundle.getString("meal_time") as String
         val threeDayMeal = arrayOf<Meal>(
@@ -20,189 +20,152 @@ class Result : AppCompatActivity() {
             bundle.getParcelable<Meal>("two_days_ago_meal") as Meal,
             bundle.getParcelable<Meal>("three_days_ago_meal") as Meal
         )
-        showRecommendedMenu(threeDayMeal, pickedMealTime)
-    }
-
-    fun showRecommendedMenu(threeDayMeal: Array<Meal>, pickedMealTime: String) {
-//        var selectedAreas = arrayOf(
-//            threeDayMeal[0].areaDivision.ordinal,
-//            threeDayMeal[1].areaDivision.ordinal,
-//            threeDayMeal[2].areaDivision.ordinal
-//        )
-        var selectedFoodType = arrayOf(
+        Log.d("어제 먹은거", "Result meals = " + threeDayMeal[0])
+        Log.d("그제 먹은거", "Result meals = " + threeDayMeal[1])
+        Log.d("삼일전 먹은거", "Result meals = " + threeDayMeal[2])
+        var selectedFoodTypeWithThreeDay = arrayOf(
             threeDayMeal[0].foodType.ordinal,
             threeDayMeal[1].foodType.ordinal,
             threeDayMeal[2].foodType.ordinal
         )
-        var selectedFatTaste = arrayOf(
+        var selectedFatTasteWithThreeDay = arrayOf(
             threeDayMeal[0].fatTaste.ordinal,
             threeDayMeal[1].fatTaste.ordinal,
             threeDayMeal[2].fatTaste.ordinal
         )
-        var selectedTaste = arrayOf(
+        var selectedTasteWithThreeDay = arrayOf(
             threeDayMeal[0].taste.ordinal,
             threeDayMeal[1].taste.ordinal,
             threeDayMeal[2].taste.ordinal
         )
-//        var selectedTaste3 = arrayOf(
-//            threeDayMeal[0].taste3.ordinal,
-//            threeDayMeal[1].taste3.ordinal,
-//            threeDayMeal[2].taste3.ordinal
-//        )
 
-//        var numsForRandomArea = Array(AreaDivision.values().size, { 1 })
-//        for (i in 0..selectedAreas.size - 1) {
-//            numsForRandomArea[selectedAreas[i]] += 1
-//        }
-//        val weightsForArea = arrayOf(
-//            AreaDivision.values().size * numMultipleWeight - numsForRandomArea[0],
-//            AreaDivision.values().size * numMultipleWeight - numsForRandomArea[1],
-//            AreaDivision.values().size * numMultipleWeight - numsForRandomArea[2],
-//            AreaDivision.values().size * numMultipleWeight - numsForRandomArea[3]
-//        )
-//        val pickedArea: AreaDivision = AreaDivision.values()[
-//                weighted_random(weightsForArea)
-//        ]
-
-        var numsForRandomFoodType = Array(FoodType.values().size, { 1 })
-        for (i in 0..selectedFoodType.size - 1) {
-            numsForRandomFoodType[selectedFoodType[i]] += 1
-        }
-        val weightsForFoodType = arrayOf(
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[0],
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[1],
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[2],
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[3],
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[4],
-            FoodType.values().size * numMultipleWeight - numsForRandomFoodType[5]
-        )
-        val pickedFoodType: FoodType = FoodType.values()[
-                weighted_random(weightsForFoodType)
-        ]
-
-        var numsForRandomFatTaste = Array(Taste.values().size, { 1 })
-        for (i in 0..selectedFatTaste.size - 1) {
-            numsForRandomFatTaste[selectedFatTaste[i]] += 1
-        }
-        val weightsForFatTaste = arrayOf(
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[0],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[1],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[2],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[3],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[4],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[5],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[6],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[7],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[8],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[9],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[10],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[11],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[12],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[13],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[14],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[15],
-            Taste.values().size * numMultipleWeight - numsForRandomFatTaste[16]
-        )
-        val pickedFatTaste: Taste = Taste.values()[
-                weighted_random(weightsForFatTaste)
-        ]
-
-        var numsForRandomTaste = Array(Taste.values().size, { 1 })
-        for (i in 0..selectedTaste.size - 1) {
-            numsForRandomTaste[selectedTaste[i]] += 1
-        }
-        val weightsForTaste = arrayOf(
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[0],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[1],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[2],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[3],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[4],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[5],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[6],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[7],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[8],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[9],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[10],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[11],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[12],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[13],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[14],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[15],
-            Taste.values().size * numMultipleWeight - numsForRandomTaste[16]
+        val pickedMeal = chooseRandomlyMealWithThreeDayMeal(
+            pickedMealTime,
+            selectedFoodTypeWithThreeDay,
+            selectedFatTasteWithThreeDay,
+            selectedTasteWithThreeDay
         )
 
-        var pickedTaste: Taste? = null
-        pickedTaste = Taste.values()[
-                weighted_random(weightsForTaste)
-        ]
-
-//        var numsForRandomTaste3 = Array(Taste.values().size, { 1 })
-//        for (i in 0..selectedTaste3.size - 1) {
-//            numsForRandomTaste3[selectedTaste3[i]] += 1
-//        }
-//        val weightsForTaste3 = arrayOf(
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[0],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[1],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[2],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[3],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[4],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[5],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[6],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[7],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[8],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[9],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[10],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[11],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[12],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[13],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[14],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[15],
-//            Taste.values().size * numMultipleWeight - numsForRandomTaste3[16]
-//        )
-//
-//
-//        var pickedTaste3: Taste? = null
-//        do {
-//            pickedTaste3 = Taste.values()[
-//                    weighted_random(weightsForTaste3)
-//            ]
-//        } while (pickedTaste3 == pickedTaste2)
-        Log.d(
-            "mealsSearched", " 음식종류 : " + pickedFoodType + " 기름기 : " +
-                    pickedFatTaste + " 맛 : " + pickedTaste
-        )
-
-        val mealsSearchedThroughMealtime = arrayListOf<Meal>()
-        when (pickedMealTime) {
-            MainMealTime.아침.toString()
-            -> searchThroughMealTime(pickedMealTime, mealsSearchedThroughMealtime)
-            else
-            -> {
-                searchThroughMealTime(pickedMealTime, mealsSearchedThroughMealtime)
-                searchThroughMealTime(MainMealTime.점저.toString(), mealsSearchedThroughMealtime)
-            }
+        if (pickedMeal == null) {
+            chooseRandomlyMealWithThreeDayMeal(
+                pickedMealTime,
+                selectedFoodTypeWithThreeDay,
+                selectedFatTasteWithThreeDay,
+                selectedTasteWithThreeDay
+            )
         }
 
-        Log.d("mealsSearched", "식사시간 = " + mealsSearchedThroughMealtime)
+        Log.d("mealsSearched", "pickedMeal = " + pickedMeal)
 
-//        val mealSearchedThroughArea = arrayListOf<Meal>()
-////        for (meal in mealsSearchedThroughMealtime) {
-////            if (meal.areaDivision == pickedArea)
-////                mealSearchedThroughArea.add(meal)
-////        }
-
-        //Log.d("mealsSearched", "지역 = " + mealSearchedThroughArea)
-
-        val mealSearchedThroughFoodType = arrayListOf<Meal>()
-        for (meal in mealsSearchedThroughMealtime) {
-            if (meal.foodType == pickedFoodType)
-                mealSearchedThroughFoodType.add(meal)
-        }
-
-        Log.d("mealsSearched", "FoodType : " + mealSearchedThroughFoodType)
+        resultText.text = pickedMeal!!.foodName.toString()
     }
 
-    fun weighted_random(weights: Array<Int>): Int {
+    fun chooseRandomlyMealWithThreeDayMeal(
+        pickedMealTime: String,
+        selectedFoodTypeWithThreeDay: Array<Int>,
+        selectedFatTasteWithThreeDay: Array<Int>,
+        selectedTasteWithThreeDay: Array<Int>
+    ): Meal? {
+        var pickedMeal: Meal? = null
+        Log.d("mealsSearched", "FromStartMeal = " + pickedMeal)
+        var numsForRandomFoodType = Array(FoodType.values().size, { 1 })
+        var weightsForFoodType = arrayListOf<Int>()
+        var numsForRandomFatTaste = Array(FatTaste.values().size, { 1 })
+        var weightsForFatTaste = arrayListOf<Int>()
+        var numsForRandomTaste = Array(Taste.values().size, { 1 })
+        var weightsForTaste = arrayListOf<Int>()
+        var mealsSearchedThroughMealtime = arrayListOf<Meal>()
+        var mealSearchedThroughFoodType = arrayListOf<Meal>()
+        var mealSearchedThroughFatTaste = arrayListOf<Meal>()
+        var mealSearchedThroughTaste = arrayListOf<Meal>()
+
+        //선택된 식사시간의 메뉴들 배열에 넣기
+        searchThroughMealTime(pickedMealTime, mealsSearchedThroughMealtime)
+        when (pickedMealTime) {
+            MainMealTime.아침.toString()
+            -> searchThroughMealTime(MainMealTime.아점.toString(), mealsSearchedThroughMealtime)
+
+            MainMealTime.점심.toString()
+            -> {
+                searchThroughMealTime(MainMealTime.아점.toString(), mealsSearchedThroughMealtime)
+                searchThroughMealTime(MainMealTime.점저.toString(), mealsSearchedThroughMealtime)
+            }
+
+            MainMealTime.저녁.toString()
+            -> searchThroughMealTime(MainMealTime.점저.toString(), mealsSearchedThroughMealtime)
+        }
+        Log.d("mealsSearched", "식사시간 = " + mealsSearchedThroughMealtime)
+
+        for (foodType in 0..selectedFoodTypeWithThreeDay.size - 1) {
+            numsForRandomFoodType[selectedFoodTypeWithThreeDay[foodType]] += 1
+        }
+        //푸드타입은 enum 개수가 적으므로 곱해서 이미 선택받은 푸드타입은 나올 확률을 줄임.
+        for (num in 0..numsForRandomFoodType.size - 1) {
+            weightsForFoodType.add(FoodType.values().size * numMultipleWeight - numsForRandomFoodType[num])
+        }
+
+        for (fatTaste in 0..selectedFatTasteWithThreeDay.size - 1) {
+            numsForRandomFatTaste[selectedFatTasteWithThreeDay[fatTaste]] += 1
+        }
+        for (num in 0..numsForRandomFatTaste.size - 1) {
+            weightsForFatTaste.add(FatTaste.values().size * numMultipleWeight - numsForRandomFatTaste[num])
+        }
+
+        for (taste in 0..selectedTasteWithThreeDay.size - 1) {
+            numsForRandomTaste[selectedTasteWithThreeDay[taste]] += 1
+        }
+        for (num in 0..numsForRandomTaste.size - 1) {
+            weightsForTaste.add(Taste.values().size - numsForRandomTaste[num])
+        }
+
+
+        do {
+            var pickedFoodType: FoodType =
+                FoodType.values()[weighted_random(weightsForFoodType)]
+            Log.d("mealsSearched", "선택받은 푸드타입 = " + pickedFoodType)
+            //선택된 푸드타입의 음식들 배열에 넣기
+            for (meal in mealsSearchedThroughMealtime) {
+                if (meal.foodType == pickedFoodType)
+                    mealSearchedThroughFoodType.add(meal)
+            }
+            Log.d("mealsSearched", "FoodType : " + mealSearchedThroughFoodType)
+
+            var pickedFatTaste: FatTaste =
+                FatTaste.values()[weighted_random(weightsForFatTaste)]
+            Log.d("mealsSearched", "선택받은 기름기 = " + pickedFatTaste)
+            //선택된 기름기의 음식들 배열에 넣기
+            for (meal in mealSearchedThroughFoodType) {
+                if (meal.fatTaste == pickedFatTaste)
+                    mealSearchedThroughFatTaste.add(meal)
+            }
+            Log.d("mealsSearched", "FatTaste : " + mealSearchedThroughFatTaste)
+
+            var pickedTaste: Taste = Taste.values()[weighted_random(weightsForTaste)]
+            Log.d(
+                "mealsSearched", "선택받은 맛 : " + pickedTaste
+            )
+            for (meal in mealSearchedThroughFatTaste) {
+                if (meal.taste == pickedTaste)
+                    mealSearchedThroughTaste.add(meal)
+            }
+            Log.d("mealsSearched", "Taste : " + mealSearchedThroughTaste)
+
+            //배열에 아무것도 안들어 간다고 null이 되는게 아님
+            if (mealSearchedThroughTaste.isNotEmpty()) {
+                pickedMeal =
+                    mealSearchedThroughTaste[Random.nextInt(0, mealSearchedThroughTaste.size)]
+            } else {
+                mealSearchedThroughFoodType.clear()
+                mealSearchedThroughFatTaste.clear()
+                mealSearchedThroughTaste.clear()
+            }
+            Log.d("mealsSearched", "meal = " + pickedMeal)
+        } while (pickedMeal == null)
+
+        return pickedMeal
+    }
+
+    fun weighted_random(weights: ArrayList<Int>): Int {
         var r = Random.nextInt(1, weights.sum())
         for (i in 0..weights.size) {
             r -= weights[i]
@@ -219,5 +182,6 @@ class Result : AppCompatActivity() {
             if (meal.mainMealTime.toString() == pickedMealTime)
                 mealsSearchedThroughMealtime.add(meal)
         }
+
     }
 }

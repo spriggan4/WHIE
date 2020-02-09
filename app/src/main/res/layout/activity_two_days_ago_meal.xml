@@ -28,161 +28,18 @@
         app:layout_constraintStart_toEndOf="@+id/youEatTwoDaysAgoText"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/samGyubSalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="76dp"
-        android:text="삼겹살"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/youEatTwoDaysAgoText" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="30dp"
+        tools:context=".TwoDaysAgoMeal">
 
-    <TextView
-        android:id="@+id/duckMeatText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="192dp"
-        android:layout_marginEnd="20dp"
-        android:text="오리고기"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/pizzaText"
-        app:layout_constraintStart_toEndOf="@+id/samGyubSalText"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/saSiMiText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="108dp"
-        android:text="회"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/duckMeatText" />
-
-    <TextView
-        android:id="@+id/suShiText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="108dp"
-        android:text="초밥"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/saSiMiText" />
-
-    <TextView
-        android:id="@+id/gamJaTangText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="52dp"
-        android:text="감자탕"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/curryText" />
-
-    <TextView
-        android:id="@+id/curryText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="48dp"
-        android:text="카레"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/braisedChickenText" />
-
-    <TextView
-        android:id="@+id/porkGalBiText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="68dp"
-        android:text="돼지갈비"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/samGyubSalText" />
-
-    <TextView
-        android:id="@+id/braisedChickenText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="52dp"
-        android:text="찜닭"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/porkGalBiText" />
-
-    <TextView
-        android:id="@+id/biBimBobText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="56dp"
-        android:text="비빔밥"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suShiText" />
-
-    <TextView
-        android:id="@+id/pizzaText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="44dp"
-        android:text="피자"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/gugSuText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="50dp"
-        android:text="국수"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/biBimBobText" />
-
-    <TextView
-        android:id="@+id/calGugSuText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="50dp"
-        android:text="칼국수"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gamJaTangText" />
-
-    <TextView
-        android:id="@+id/hamBurGerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="228dp"
-        android:layout_marginTop="50dp"
-        android:text="햄버거"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gugSuText" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_data_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,12 @@ package com.example.whie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_select_yesterday_meal.*
 import org.jetbrains.anko.startActivity
 
 class SelectYesterdayMeal : AppCompatActivity() {
+    //val dataArray = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,82 +18,10 @@ class SelectYesterdayMeal : AppCompatActivity() {
 
         mealTimeText.text = mealTime
 
-        samGyubSalText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[0]
-            )
-        }
+        rv_data_list.layoutManager = GridLayoutManager(this, 3)
 
-        duckMeatText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[1]
-            )
-        }
-
-        saSiMiText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[2]
-            )
-        }
-
-        suShiText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[3]
-            )
-        }
-
-        gamJaTangText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[4]
-            )
-        }
-
-        curryText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[5]
-            )
-        }
-
-        porkGalBiText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[6]
-            )
-        }
-
-        braisedChickenText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[7]
-            )
-        }
-
-        biBimBobText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[8]
-            )
-        }
-
-        pizzaText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[9]
-            )
-        }
-
-        gugSuText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[10]
-            )
-        }
-
-        calGugSuText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[11]
-            )
-        }
-
-        hamBurGerText.setOnClickListener {
-            makeBundleAndStartActivity(
-                meals[12]
-            )
+        rv_data_list.adapter = ExtensionDataAdapter(meals, this) {
+            makeBundleAndStartActivity(it)
         }
     }
 
@@ -100,6 +30,7 @@ class SelectYesterdayMeal : AppCompatActivity() {
         bundle.putParcelable("yesterday_meal", meal)
         bundle.putString("meal_time", mealTimeText.text.toString())
 
+        rv_data_list.adapter = null
         startActivity<TwoDaysAgoMeal>("bundle" to bundle)
     }
 }
