@@ -27,6 +27,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun inputYesterdayMeal() {
-        startActivity<SelectYesterdayMeal>("mealTime" to mealTime)
+        startActivity<SelectMealsEat>("mealTime" to mealTime)
     }
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Result"></activity>
+        <activity android:name=".SelectMealsEat"></activity>
+        <activity android:name=".Result" />
         <activity android:name=".ThreeDaysAgoMeal" />
         <activity android:name=".three_days_ago_meal" />
         <activity android:name=".TwoDaysAgoMeal" />
