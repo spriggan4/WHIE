@@ -1,6 +1,7 @@
 package com.example.whie
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,11 +21,27 @@ class SelectMealsEat : AppCompatActivity() {
         rv_data_list.adapter = ExtensionDataAdapter(meals, this) {
             makeBundleAndStartActivity(it)
         }
+
+        setBackBtn.setOnClickListener {
+            if (turnNum > 0) {
+                when (turnNum) {
+                    2 -> {
+                        bundle.remove("two_days_ago_meal")
+                        Log.d("mealsInBundle", "turnNum = " + turnNum + " bundle = " + bundle)
+                    }
+                    1 -> {
+                        bundle.remove("yesterday_meal")
+                        Log.d("mealsInBundle", "turnNum = " + turnNum + " bundle = " + bundle)
+                    }
+                }
+            }
+            mealsEatenLayout.removeViewAt(--turnNum)
+        }
     }
 
     private fun makeBundleAndStartActivity(meal: Meal) {
         val textView = TextView(this)
-        textView.text = "${turnNum+1}. ${meal.foodName.toString()}"
+        textView.text = "${turnNum + 1}. ${meal.foodName}"
 
         mealsEatenLayout.addView(textView, turnNum)
 

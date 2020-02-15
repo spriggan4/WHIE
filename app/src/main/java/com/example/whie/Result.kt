@@ -10,16 +10,16 @@ class Result : AppCompatActivity() {
     val numMultipleWeight = 2
     var beforPickedMeal: Meal? = null
     var pickedMeal: Meal? = null
-    var numsForRandomFoodType = Array(FoodType.values().size, { 1 })
-    var weightsForFoodType = arrayListOf<Int>()
-    var numsForRandomFatTaste = Array(FatTaste.values().size, { 1 })
-    var weightsForFatTaste = arrayListOf<Int>()
-    var numsForRandomTaste = Array(Taste.values().size, { 1 })
-    var weightsForTaste = arrayListOf<Int>()
-    var mealsSearchedThroughMealtime = arrayListOf<Meal>()
-    var mealSearchedThroughFoodType = arrayListOf<Meal>()
-    var mealSearchedThroughFatTaste = arrayListOf<Meal>()
-    var mealSearchedThroughTaste = arrayListOf<Meal>()
+    val numsForRandomFoodType = Array(FoodType.values().size, { 1 })
+    val weightsForFoodType = arrayListOf<Int>()
+    val numsForRandomFatTaste = Array(FatTaste.values().size, { 1 })
+    val weightsForFatTaste = arrayListOf<Int>()
+    val numsForRandomTaste = Array(Taste.values().size, { 1 })
+    val weightsForTaste = arrayListOf<Int>()
+    val mealsSearchedThroughMealtime = arrayListOf<Meal>()
+    val mealSearchedThroughFoodType = arrayListOf<Meal>()
+    val mealSearchedThroughFatTaste = arrayListOf<Meal>()
+    val mealSearchedThroughTaste = arrayListOf<Meal>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
