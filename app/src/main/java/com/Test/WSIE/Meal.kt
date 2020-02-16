@@ -1,4 +1,4 @@
-package com.example.whie
+package com.Test.WSIE
 
 import android.os.Parcel
 import android.os.Parcelable

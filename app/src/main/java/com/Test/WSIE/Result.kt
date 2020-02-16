@@ -1,7 +1,6 @@
-package com.example.whie
+package com.Test.WSIE
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_result.*
 import kotlin.random.Random
@@ -32,9 +31,9 @@ class Result : AppCompatActivity() {
             bundle.getParcelable<Meal>("two_days_ago_meal") as Meal,
             bundle.getParcelable<Meal>("three_days_ago_meal") as Meal
         )
-        Log.d("어제 먹은거", "Result meals = " + threeDayMeal[0])
-        Log.d("그제 먹은거", "Result meals = " + threeDayMeal[1])
-        Log.d("삼일전 먹은거", "Result meals = " + threeDayMeal[2])
+//        Log.d("어제 먹은거", "Result meals = " + threeDayMeal[0])
+//        Log.d("그제 먹은거", "Result meals = " + threeDayMeal[1])
+//        Log.d("삼일전 먹은거", "Result meals = " + threeDayMeal[2])
         var selectedFoodTypeWithThreeDay = arrayOf(
             threeDayMeal[0].foodType.ordinal,
             threeDayMeal[1].foodType.ordinal,
@@ -83,7 +82,7 @@ class Result : AppCompatActivity() {
             MainMealTime.저녁.toString()
             -> searchThroughMealTime(MainMealTime.점저.toString(), mealsSearchedThroughMealtime)
         }
-        Log.d("mealsSearched", "식사시간 = " + mealsSearchedThroughMealtime)
+        //Log.d("mealsSearched", "식사시간 = " + mealsSearchedThroughMealtime)
 
         for (foodType in 0..selectedFoodTypeWithThreeDay.size - 1) {
             numsForRandomFoodType[selectedFoodTypeWithThreeDay[foodType]] += 1
@@ -114,33 +113,33 @@ class Result : AppCompatActivity() {
         do {
             var pickedFoodType: FoodType =
                 FoodType.values()[weighted_random(weightsForFoodType)]
-            Log.d("mealsSearched", "선택받은 푸드타입 = " + pickedFoodType)
+            //Log.d("mealsSearched", "선택받은 푸드타입 = " + pickedFoodType)
             //선택된 푸드타입의 음식들 배열에 넣기
             for (meal in mealsSearchedThroughMealtime) {
                 if (meal.foodType == pickedFoodType)
                     mealSearchedThroughFoodType.add(meal)
             }
-            Log.d("mealsSearched", "FoodType : " + mealSearchedThroughFoodType)
+            //Log.d("mealsSearched", "FoodType : " + mealSearchedThroughFoodType)
 
             var pickedFatTaste: FatTaste =
                 FatTaste.values()[weighted_random(weightsForFatTaste)]
-            Log.d("mealsSearched", "선택받은 기름기 = " + pickedFatTaste)
+            //Log.d("mealsSearched", "선택받은 기름기 = " + pickedFatTaste)
             //선택된 기름기의 음식들 배열에 넣기
             for (meal in mealSearchedThroughFoodType) {
                 if (meal.fatTaste == pickedFatTaste)
                     mealSearchedThroughFatTaste.add(meal)
             }
-            Log.d("mealsSearched", "FatTaste : " + mealSearchedThroughFatTaste)
+            //Log.d("mealsSearched", "FatTaste : " + mealSearchedThroughFatTaste)
 
             var pickedTaste: Taste = Taste.values()[weighted_random(weightsForTaste)]
-            Log.d(
-                "mealsSearched", "선택받은 맛 : " + pickedTaste
-            )
+            //Log.d(
+//                "mealsSearched", "선택받은 맛 : " + pickedTaste
+//            )
             for (meal in mealSearchedThroughFatTaste) {
                 if (meal.taste == pickedTaste)
                     mealSearchedThroughTaste.add(meal)
             }
-            Log.d("mealsSearched", "Taste : " + mealSearchedThroughTaste)
+            //Log.d("mealsSearched", "Taste : " + mealSearchedThroughTaste)
 
             //배열에 아무것도 안들어 간다고 null이 되는게 아님
             if (mealSearchedThroughTaste.isNotEmpty()) {
@@ -151,7 +150,7 @@ class Result : AppCompatActivity() {
                 mealSearchedThroughFatTaste.clear()
                 mealSearchedThroughTaste.clear()
             }
-            Log.d("mealsSearched", "meal = " + pickedMeal)
+            //Log.d("mealsSearched", "meal = " + pickedMeal)
         } while (pickedMeal == null || pickedMeal == beforPickedMeal)
 
         resultText.text = pickedMeal!!.foodName.toString()
@@ -167,7 +166,7 @@ class Result : AppCompatActivity() {
         return error("상수 구현 실패")
     }
 
-    inline fun searchThroughMealTime(
+    fun searchThroughMealTime(
         pickedMealTime: String,
         mealsSearchedThroughMealtime: ArrayList<Meal>
     ) {

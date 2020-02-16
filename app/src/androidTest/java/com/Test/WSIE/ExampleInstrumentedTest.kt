@@ -1,4 +1,4 @@
-package com.example.whie
+package com.Test.WSIE
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

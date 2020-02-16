@@ -1,4 +1,4 @@
-package com.example.whie
+package com.Test.WSIE
 
 import org.junit.Test
 
