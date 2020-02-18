@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.Test.WSIE">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,22 +17,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.Test.WSIE.SelectMealsEat"
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Activity_map_searchEatery2"
+            android:label="@string/title_activity_map_search_eatery2"></activity>
+        <!-- 구글 플레이 서비스 버전 -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!-- 안드로이드 파이 버전부터 필요 -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".SelectMealsEat"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name="com.Test.WSIE.Result" />
-        <activity android:name="com.Test.WSIE.MainActivity">
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".Result" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <!--검색 기능 구현을 위해 아래 action을 한 줄 추가합니다.-->
+                <!-- 검색 기능 구현을 위해 아래 action을 한 줄 추가합니다. -->
                 <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--검색 기능 구현을 위해 아래 meta-data를 추가합니다.-->
+            <!-- 검색 기능 구현을 위해 아래 meta-data를 추가합니다. -->
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
         </activity>
     </application>
 

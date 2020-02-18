@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WHIE</string>
+    <string name="title_activity__map__search_eatery">Map</string>
+    <string name="title_activity_map_search_eatery2">Map</string>
 </resources>

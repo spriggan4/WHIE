@@ -3,6 +3,7 @@ package com.Test.WSIE
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_result.*
+import org.jetbrains.anko.startActivity
 import kotlin.random.Random
 
 class Result : AppCompatActivity() {
@@ -59,6 +60,10 @@ class Result : AppCompatActivity() {
         againBtn.setOnClickListener {
             showResultText()
         }
+
+        goMapBtn.setOnClickListener {
+            startActivity<Activity_map_searchEatery2>()
+        }
     }
 
     fun chooseRandomlyMealStuffWithThreeDayMeal(
@@ -105,7 +110,6 @@ class Result : AppCompatActivity() {
         for (num in 0..numsForRandomTaste.size - 1) {
             weightsForTaste.add(Taste.values().size - numsForRandomTaste[num])
         }
-
         showResultText()
     }
 
