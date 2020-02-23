@@ -62,7 +62,7 @@ class Result : AppCompatActivity() {
         }
 
         goMapBtn.setOnClickListener {
-            startActivity<Activity_map_searchEatery2>()
+            startActivity<Activity_maps_searchEatery>()
         }
     }
 
@@ -110,6 +110,7 @@ class Result : AppCompatActivity() {
         for (num in 0..numsForRandomTaste.size - 1) {
             weightsForTaste.add(Taste.values().size - numsForRandomTaste[num])
         }
+
         showResultText()
     }
 
@@ -170,7 +171,7 @@ class Result : AppCompatActivity() {
         return error("상수 구현 실패")
     }
 
-    fun searchThroughMealTime(
+    inline fun searchThroughMealTime(
         pickedMealTime: String,
         mealsSearchedThroughMealtime: ArrayList<Meal>
     ) {

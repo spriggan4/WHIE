@@ -3,6 +3,7 @@ package com.Test.WSIE
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
@@ -51,11 +52,11 @@ class SelectMealsEat : AppCompatActivity() {
         searchView.apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
             //true면 아이콘 모양으로 false면 텍스트 입력 대기 상태
-            setIconifiedByDefault(false)
+            setIconifiedByDefault(true)
             //텍스트 입력 창의 폭 설정
             setMaxWidth(Int.MAX_VALUE)
             //텍스트 입력 없으면 나오는 문구
-            queryHint = "검색하고 싶은 음식명을 입력하세요"
+            queryHint = "음식명을 입력하세요"
             //소프트키보드에서 완료 버튼 설정
             setImeOptions(EditorInfo.IME_ACTION_DONE)
             //검색 리스너 구현
@@ -90,19 +91,32 @@ class SelectMealsEat : AppCompatActivity() {
     }
 
     override fun onResume() {
-        //Log.d("SelectMealsEat", "뒤로가기 후 두번째 액티비티 시작 bundle = " + bundle)
+        Log.d("SelectMealsEat", "뒤로가기 후 두번째 액티비티 시작 bundle = " + bundle)
         turnNum = 0
         bundle.clear()
-        //Log.d("SelectMealsEat", "뒤로가기 후 클리어하고 bundle = " + bundle)
+        Log.d("SelectMealsEat", "뒤로가기 후 클리어하고 bundle = " + bundle)
         mealsEatenLayout.removeAllViews()
         //searchView.textView().text=""
         super.onResume()
     }
 
     override fun onBackPressed() {
-        searchView.setIconifiedByDefault(false)
+        searchView.setIconifiedByDefault(true)
         super.onBackPressed()
     }
+
+//    override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
+//        return when(keyCode){
+//            KeyEvent.KEYCODE_BACK->{
+//                rv_data_list.adapter = ExtensionDataAdapter(meals, this) {
+//                    makeBundleAndStartActivity(it)
+//                }
+//                true
+//            }
+//            else -> super.onKeyUp(keyCode, event)
+//        }
+//
+//    }
 
     private fun makeBundleAndStartActivity(meal: Meal) {
         val textView = TextView(this)
@@ -148,8 +162,8 @@ class SelectMealsEat : AppCompatActivity() {
                     //Log.d("mealsInBundle", "turnNum = " + turnNum + " bundle = " + bundle)
                 }
             }
-            mealsEatenLayout.removeViewAt(--turnNum)
         }
+        mealsEatenLayout.removeViewAt(--turnNum)
     }
 
     private fun searchForMeal(charText: String) {
